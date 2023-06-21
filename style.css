@@ -1,4 +1,8 @@
-#listaAlimentos {
+.item {
+  display: inline-block;
+}
+#ingestaDelDia{
     min-height: 140px;
     padding: 1rem;
   }
+
