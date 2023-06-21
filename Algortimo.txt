@@ -1,0 +1,6 @@
+Una app en la que uno vaya ingresando lo que va comiendo en el día, analiza los nutrientes y te dice lo que deberías equilibrar: Si ese día te falta omega3, algún alimento con cierta vitamina, o si ya estás excedido en algo.
+
+El algoritmo debe:
+- Permitir ingresar alimentos al usuario
+- Calcular ingesta de nutrientes según los alimentos que se ingresan.
+- Realizar consultas del estado de ingesta (niveles satisfechos, faltantes y excedidos)

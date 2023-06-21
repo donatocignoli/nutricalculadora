@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nutricalculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section>
+          <div class="listaAlimentos">
+            <h1 style="padding-bottom: 0">Hola, Bienvenido a la nutricalculadora</h1>
+            <h2 style="padding-top: 0.5rem">¿Qué comiste hoy?</h2>
+          </div>
+          <ul>
+            <li class="boton" id="btnArroz">Arroz</li>
+            <li class="boton" id="btnFideos">Fideos</li>
+            <li class="boton" id="btnCarne">Carne</li>
+            <li class="boton" id="btnLeche">Leche</li>
+            <li class="boton" id="btnManzana">Manzana</li>
+          </ul>
+        </section>
+        <section class="seccionIngestaDia">
+          <h1>Ingesta del día</h1>
+          <ul id="IngestaDelDia">
+            <!-- Acá vamos a cargar los items que se vayan consumiendo en el día -->
+          </ul>
+          <h1 id="nutrientes"> Nutrientes ingeridos: <span></span></h1>
+        </section>
+      </main>
+   
+    <script src="nutricalculadora.js"></script>
+</body>
+</html>
