@@ -63,14 +63,30 @@ for (const boton of botones) {
 }
 
 // Función encargada de agregar alimentos a la ingesta del día
+
 function agregar(alimento) {
+  // Verificar si el alimento ya está presente en la ingesta del día
+  const alimentoExistente = ingestaDelDia.find(
+    (item) => item.nombre === alimento.nombre
+  );
+
+  if (alimentoExistente) {
+    // Si el alimento ya está presente, incrementar el contador en lugar de agregarlo nuevamente
+    alimentoExistente.contador++;
+  } else {
+    // Si el alimento no está presente, agregarlo a la ingesta del día con un contador inicial de 1
+    alimento.contador = 1;
     ingestaDelDia.push(alimento);
-    nutriNivel = nutriNivel + alimento.nutriNivel; // Actualizo el nutriNivel
-    proteina = proteina + alimento.proteina; // Actualizo el nivel de prote
-    grasas = grasas + alimento.grasas; // Actualizo el nivel de grasas
-    carbohidratos = carbohidratos + alimento.carbohidratos; // Actualizo el nivel de carbos
-    actualizarHTML(); // Actualizo el HTML
   }
+
+  nutriNivel = nutriNivel + alimento.nutriNivel * alimento.contador;
+  proteina = proteina + alimento.proteina * alimento.contador;
+  grasas = grasas + alimento.grasas * alimento.contador;
+  carbohidratos = carbohidratos + alimento.carbohidratos * alimento.contador;
+  
+  actualizarHTML();
+}
+
 
 // Función encargada de quitar alimentos a la ingesta del día
 function quitar(indice) {
@@ -89,51 +105,43 @@ function quitar(indice) {
 function actualizarHTML() {
   // Vacío el elemento del contenedor
   elementoIngestaDia.innerHTML = "";
+  // Agregar estilo flex a la lista para display horizontal
+  elementoIngestaDia.classList.add("flex", "flex-wrap");
+  // Objeto para almacenar la cantidad de cada alimento en la ingesta del día
+    const contadorAlimentos = {};
+  // Ciclo contador de alimentos
+    for (const alimento of ingestaDelDia) {
+      if (!contadorAlimentos[alimento.nombre]) {
+        contadorAlimentos[alimento.nombre] = 1;
+      } else {
+        contadorAlimentos[alimento.nombre]++;
+      }
+    }
   // Recorro el array y vuelvo a agregar a TODOS los elementos (items) que hay dentro del array 
   for (const alimento of ingestaDelDia) {
     let indiceAlimentos = ingestaDelDia.indexOf(alimento);
+    let contador = alimento.contador;
     let elementoAlimento = `
-        <li class="alimento" onclick="quitar(${indiceAlimentos})">
-            <img src="img/${alimento.imagen}" />
-        </li>`;
+      <li class="alimento flex-shrink-0 w-1/6" onclick="quitar(${indiceAlimentos})">
+        <img src="img/${alimento.imagen}" />
+        <span class="contador">${contador}</span>
+      </li>`;
     elementoIngestaDia.innerHTML += elementoAlimento;
   }
   // Actualizo nutrientes
   contadorNutriNivel.innerText = nutriNivel;
   contadorProteina.innerText = proteina;
+  
 }
 
-// HAY QUE BUSCAR FORMA DE AGREGAR CANTIDAD EN GR O ML POR CADA INGRESO EN VEZ DE REPETIR EL ITEM
 
-  // while (alimento != 'Salir') {
-  //     alimento = prompt('Ingrese el alimento ingerido:\n\n- Salir\n- Fruta\n- Leche\n- Arroz\n- Carne');
-  //     if (alimento='Salir'){
-  //       break;
-  //     }
-  //     cantidadIngerida =  parseInt(prompt('Ingrese la cantidad ingerida en gramos o mililitros'))
-  
-  //     switch (alimento) {
-  //       case 'Fruta':
-  //         nutriNivel += 2 * cantidadIngerida;
-  //         console.log(nutriNivel);
-  //         break;
-  //       case 'Leche':
-  //         nutriNivel += 1 * cantidadIngerida;
-  //         console.log(nutriNivel);
-  //         break;
-  //       case 'Arroz':
-  //         nutriNivel += 2 * cantidadIngerida;
-  //         console.log(nutriNivel);
-  //         break;
-  //       case 'Carne':
-  //         nutriNivel += 3 * cantidadIngerida;
-  //         console.log(nutriNivel);
-  //         break;
-  //       default:
-  //         alert('El alimento no existe en la base de datos');
-  //         continue;
-  //     }
-  // }
+// Evento para mostrar/ocultar resultado nutricional
+const btnMostrarOcultar = document.querySelector("#btnMostrarOcultar");
+const seccionResultadoNutricional = document.querySelector(".resultadoNutricional");
+
+btnMostrarOcultar.addEventListener("click", function() {
+  seccionResultadoNutricional.classList.toggle("hidden");
+});
 
 
 if (nutriNivel >= 1000) {

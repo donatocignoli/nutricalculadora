@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nutricalculadora</title>
+    <link rel="stylesheet" href="/src/queryselectors.css">
+</head>
+<body class="bg-gray-100">
+    <main class="container mx-auto py-8">
+        <section>
+            <div class="text-center">
+                <h1 class="text-2xl font-bold underline">Bienvenido a la nutricalculadora</h1>
+                <h2 class="pt-2">¿Qué comiste hoy?</h2>
+            </div>
+            <ul class="flex justify-center mt-4">
+                <li class="boton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" id="btnArroz">Arroz</li>
+                <li class="boton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer ml-2" id="btnFideos">Fideos</li>
+                <li class="boton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer ml-2" id="btnCarne">Carne</li>
+                <li class="boton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer ml-2" id="btnLeche">Leche</li>
+                <li class="boton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer ml-2" id="btnManzana">Manzana</li>
+            </ul>
+        </section>
+        <section class="seccionIngestaDia mt-8">
+            <h2 class="text-center">Ingesta del día</h2>
+            <ul id="ingestaDelDia"></ul>
+        </section>
+        <section class="botonResultado">
+          <div class="text-center">
+            <button id="btnMostrarOcultar" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Mostrar Resultado Nutricional</button>
+          </div>
+        </section>
+        <section class="resultadoNutricional">
+          <h2 class="text-center mt-4">Nutrientes ingeridos:</h2>
+          <h3 id="nutriNivel" class="text-center">NutriNivel: <span></span></h3>
+          <h3 id="proteina" class="text-center">Proteina: <span></span> gramos</h3> 
+        </section>
+    </main>
+   
+    <script src="nutricalculadora.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
